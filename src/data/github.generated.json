@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "user": "asmizilpilwar19",
+    "publicRepos": 20,
+    "syncedAt": "2026-10-07"
+  },
+  "repos": {
+    "tic-tac-toe": {
+      "description": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-10-02T12:37:10Z",
+      "pushedAt": "2026-10-02T12:39:57Z",
+      "url": "https://github.com/asmizilpilwar19/tic-tac-toe"
+    },
+    "neural-network": {
+      "description": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-10-02T12:32:15Z",
+      "pushedAt": "2026-10-02T12:33:14Z",
+      "url": "https://github.com/asmizilpilwar19/neural-network"
+    },
+    "chatbot": {
+      "description": null,
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-10-02T12:17:13Z",
+      "pushedAt": "2026-10-02T12:20:27Z",
+      "url": "https://github.com/asmizilpilwar19/chatbot"
+    },
+    "career-builder-ai": {
+      "description": "AI-powered resume and portfolio builder that helps users create polished resumes, project descriptions, cover letters, and job-specific applications.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-09-11T06:45:55Z",
+      "pushedAt": "2026-09-11T06:47:12Z",
+      "url": "https://github.com/asmizilpilwar19/career-builder-ai"
+    },
+    "aperture-ai-saas": {
+      "description": "A full-stack AI SaaS workspace for AI chat, document analysis, summarization, search, and usage analytics.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-09-11T05:33:07Z",
+      "pushedAt": "2026-09-11T05:35:04Z",
+      "url": "https://github.com/asmizilpilwar19/aperture-ai-saas"
+    },
+    "smartperfume": {
+      "description": "AURA is a futuristic smart perfume brand that combines personalized fragrance with innovative technology. Users can create a scent based on their mood, occasion, and preferred fragrance notes through an immersive, interactive 3D experience.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "homepage": "https://smartperfume-chi.vercel.app",
+      "createdAt": "2026-09-02T04:23:48Z",
+      "pushedAt": "2026-09-02T13:03:14Z",
+      "url": "https://github.com/asmizilpilwar19/smartperfume"
+    },
+    "library": {
+      "description": "A full-stack library management system for managing books, members, borrowing, returns, and library operations through an easy-to-use web interface.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-09-01T13:19:56Z",
+      "pushedAt": "2026-09-01T13:23:16Z",
+      "url": "https://github.com/asmizilpilwar19/library"
+    },
+    "StoryAtlas": {
+      "description": "A premium writing workspace for novelists, poets, scriptwriters, journalists, bloggers, students, and creative writers — built with Flask.  StoryAtlas feels like a vintage library crossed with a leather journal: calming greens, warm ivory, soft shadows, and elegant serif headings, wrapped around a genuinely useful writer's toolkit.",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-08-05T14:12:50Z",
+      "pushedAt": "2026-08-05T14:28:28Z",
+      "url": "https://github.com/asmizilpilwar19/StoryAtlas"
+    },
+    "food_chooser": {
+      "description": "A cute desktop restaurant picker built with Python and Tkinter that helps users save their favorite restaurants and randomly selects one through a fun animated picker, making group dining decisions quick, simple, and enjoyable.",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-07-05T05:36:56Z",
+      "pushedAt": "2026-07-05T05:37:27Z",
+      "url": "https://github.com/asmizilpilwar19/food_chooser"
+    },
+    "colour_analysis": {
+      "description": "A cute desktop Color Palette Finder built with Python and Tkinter that recommends seasonal color palettes based on undertone, contrast, and depth, helping users discover colors that best complement their natural features.",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-07-05T05:33:52Z",
+      "pushedAt": "2026-07-05T05:34:45Z",
+      "url": "https://github.com/asmizilpilwar19/colour_analysis"
+    },
+    "gratitude_journal": {
+      "description": "A calming desktop gratitude journal built with Python and Tkinter that transforms daily gratitude entries into a growing virtual garden, encouraging mindfulness, consistency, and positive mental well-being through a simple and engaging visual experience.",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-07-05T05:31:05Z",
+      "pushedAt": "2026-07-05T05:32:09Z",
+      "url": "https://github.com/asmizilpilwar19/gratitude_journal"
+    },
+    "exam_scheduling": {
+      "description": "An AI-powered Exam Scheduling System built with Python and Tkinter that uses Constraint Satisfaction Problem (CSP) techniques, Backtracking, and Forward Checking to generate conflict-free examination timetables through an intuitive graphical interface.",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-07-04T16:31:13Z",
+      "pushedAt": "2026-07-04T16:32:45Z",
+      "url": "https://github.com/asmizilpilwar19/exam_scheduling"
+    },
+    "pomodoro": {
+      "description": "This project demonstrates desktop application development using Python's built-in Tkinter library while showcasing event-driven programming, GUI design, timer management, and state handling. It serves as a practical productivity tool and an excellent beginner-to-intermediate Python project for learning graphical user interface development.",
+      "language": "Python",
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-07-04T16:23:45Z",
+      "pushedAt": "2026-07-04T16:26:20Z",
+      "url": "https://github.com/asmizilpilwar19/pomodoro"
+    },
+    "PyChess": {
+      "description": "A chess engine written in Python featuring AI, move generation, and a graphical interface.",
+      "language": null,
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2026-07-02T08:43:24Z",
+      "pushedAt": "2026-07-02T08:43:25Z",
+      "url": "https://github.com/asmizilpilwar19/PyChess"
+    },
+    "exam-scheduling": {
+      "description": "Developed a GUI-based AI Exam Scheduler using Python and Tkinter that applies Constraint Satisfaction Problem (CSP) techniques to generate conflict-free exam timetables. Implemented backtracking with forward checking, handling constraints like teacher clashes, room capacity, and student conflicts, with support for data management and CSV export.",
+      "language": null,
+      "topics": [],
+      "stars": 1,
+      "homepage": null,
+      "createdAt": "2026-06-26T13:51:17Z",
+      "pushedAt": "2026-06-26T13:51:40Z",
+      "url": "https://github.com/asmizilpilwar19/exam-scheduling"
+    },
+    "time_table_generator": {
+      "description": "Developed a Java-based multi-class timetable generator that automates weekly scheduling of subjects across time slots. Implemented constraint handling for maximum lectures per subject, teacher conflict avoidance, and no consecutive repetition. Used randomization, collections, and scheduling logic to generate conflict-free academic timetables.",
+      "language": null,
+      "topics": [],
+      "stars": 1,
+      "homepage": null,
+      "createdAt": "2026-06-26T13:45:51Z",
+      "pushedAt": "2026-06-26T13:46:00Z",
+      "url": "https://github.com/asmizilpilwar19/time_table_generator"
+    },
+    "fictional-game": {
+      "description": "Developed a text-based interactive fiction game in Java featuring branching storylines, player choices, health tracking, and inventory management. Implemented multiple endings based on user decisions, input validation, and modular game logic using methods, collections, and control structures to create an engaging console-based adventure experience.",
+      "language": null,
+      "topics": [],
+      "stars": 1,
+      "homepage": null,
+      "createdAt": "2026-06-26T13:43:26Z",
+      "pushedAt": "2026-06-26T13:43:39Z",
+      "url": "https://github.com/asmizilpilwar19/fictional-game"
+    },
+    "poetry-generator": {
+      "description": "Developed an AI-inspired poetry generator using Python and Java. Implemented Markov Chain and template-based text generation to create unique poems from a training corpus. Applied NLP concepts, probabilistic modeling, and randomization to generate context-aware poetic text while demonstrating text processing and algorithmic programming skills.",
+      "language": null,
+      "topics": [],
+      "stars": 1,
+      "homepage": null,
+      "createdAt": "2026-06-26T13:37:25Z",
+      "pushedAt": "2026-06-26T13:37:51Z",
+      "url": "https://github.com/asmizilpilwar19/poetry-generator"
+    },
+    "emotion-detection": {
+      "description": null,
+      "language": null,
+      "topics": [],
+      "stars": 0,
+      "homepage": null,
+      "createdAt": "2025-10-13T13:41:04Z",
+      "pushedAt": "2026-06-26T13:32:45Z",
+      "url": "https://github.com/asmizilpilwar19/emotion-detection"
+    },
+    "pet-simulator": {
+      "description": "pet that has stats like hunger, happiness, and energy.  User can \"feed,\" \"play,\" or \"put it to sleep,\" and stats update accordingly.",
+      "language": null,
+      "topics": [],
+      "stars": 1,
+      "homepage": null,
+      "createdAt": "2025-09-24T05:43:31Z",
+      "pushedAt": "2025-09-24T05:43:52Z",
+      "url": "https://github.com/asmizilpilwar19/pet-simulator"
+    }
+  }
+}
