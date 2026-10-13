@@ -43,7 +43,7 @@ async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
 
   const { next, index } = siblings(p.slug);
   const updated = pushedOn(p.repo);
-  const wide = p.slug === "aperture" ? "aspect-[16/10]" : "aspect-[1600/698]";
+  const wide = p.shotRatio ?? "aspect-[1600/698]";
   const host = p.liveUrl ? new URL(p.liveUrl).host : p.githubUrl ? p.githubUrl.replace("https://", "") : "private project";
   const hasBrowser = !p.art;
 
@@ -122,7 +122,7 @@ async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
                 <div className="md:col-span-7">
                   <p className="label mb-4 text-paper mix-blend-difference">Illustration, not a screenshot</p>
                   <p className="display text-[clamp(2rem,4vw,3.6rem)] leading-[1.02] tracking-[-0.01em] text-ink">
-                    This project is private, so instead of screenshots here is what it is, what is inside and how it was built.
+                    This project is private, so instead of screenshots there is an illustration and a short description.
                   </p>
                 </div>
               </div>
@@ -135,12 +135,16 @@ async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
             <p data-fade className="display text-[clamp(1.6rem,2.8vw,2.6rem)] leading-[1.12] tracking-[-0.01em]">{p.what}</p>
             <p data-fade className="mt-6 max-w-xl text-[0.95rem] leading-relaxed text-ink-2">{p.why}</p>
           </Row>
-          <Row k="The problem">
-            <p data-fade className="max-w-2xl text-[1.1rem] leading-relaxed">{p.problem}</p>
-          </Row>
-          <Row k="The approach">
-            <p data-fade className="max-w-2xl text-[1.1rem] leading-relaxed">{p.solution}</p>
-          </Row>
+          {p.problem && (
+            <Row k="The problem">
+              <p data-fade className="max-w-2xl text-[1.1rem] leading-relaxed">{p.problem}</p>
+            </Row>
+          )}
+          {p.solution && (
+            <Row k="The approach">
+              <p data-fade className="max-w-2xl text-[1.1rem] leading-relaxed">{p.solution}</p>
+            </Row>
+          )}
           {p.features && (
             <Row k="What's inside">
               <ul className="grid gap-x-8 gap-y-4 sm:grid-cols-2">
@@ -168,9 +172,11 @@ async function CaseStudy({ params }: { params: Promise<{ slug: string }> }) {
               <PhaseTimeline phases={p.phases} />
             </Row>
           )}
-          <Row k="What I used">
-            <Tags items={p.technologies} className="text-[0.8rem]" />
-          </Row>
+          {p.technologies.length > 0 && (
+            <Row k="What I used">
+              <Tags items={p.technologies} className="text-[0.8rem]" />
+            </Row>
+          )}
           {p.learned.length > 0 && (
             <Row k="What I learned">
               <ul className="space-y-4">

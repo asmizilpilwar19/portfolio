@@ -32,10 +32,10 @@ export interface Project {
   what: string;
   /** WHY IT EXISTS (kept to what the repo itself says) */
   why: string;
-  /** The problem / idea */
-  problem: string;
-  /** The approach */
-  solution: string;
+  /** The problem / idea. Optional: private projects stay high level. */
+  problem?: string;
+  /** The approach. Optional: private projects stay high level. */
+  solution?: string;
   /** WHAT MAKES IT INTERESTING */
   interesting: string[];
   /** Owner-written reflections. Empty = section hidden. */
@@ -53,7 +53,7 @@ export interface Project {
   /** Which code-built preview to render when there is no screenshot. */
   preview?: "resumeforge" | "storyatlas";
   /** Illustrated poster used instead of a screenshot (mobile apps shown without images). */
-  art?: "studysphere" | "novara";
+  art?: "studysphere" | "novara" | "petalia";
   /** "What's inside": short feature list for projects shown without screenshots. */
   features?: string[];
   /** Optional build-phase timeline. */
@@ -62,6 +62,14 @@ export interface Project {
   /** Portrait phone screenshots, shown in device frames. */
   phones?: Shot[];
   featured?: boolean;
+  /** What kind of thing it is, e.g. "Concept website". */
+  kind?: string;
+  /** Aspect-ratio class of the screenshots (default suits the wide AURA/Librae crops). */
+  shotRatio?: string;
+  /** True only when the live site is verified to allow being framed (no X-Frame-Options / CSP). */
+  embeddable?: boolean;
+  /** CSS background for the featured panel. */
+  panel?: string;
   year: number;
   /** Short status line for the case-study header. */
   status: string;
@@ -74,6 +82,85 @@ const L = "/work/librae";
 const U = "/work/aura";
 
 const base: Project[] = [
+  {
+    slug: "elsewhere",
+    name: "ELSEWHERE",
+    repo: "elsewhere",
+    kind: "Concept website",
+    tagline: "A travel site where every destination is imaginary.",
+    what: "An immersive virtual travel website: six imaginary destinations rendered as live 3D worlds, an illustrated Dream Atlas, a destination quiz and a personal travel journal.",
+    why: "A study in making a website feel like a place: sunset palettes, layered parallax and a world that slides from golden hour to midnight as you scroll. Nothing in it is real, and the footer says so.",
+    problem:
+      "Travel sites sell real places with photographs. This one had to sell places that do not exist, so the light, atmosphere and interaction have to do all of the persuading.",
+    solution:
+      "Each destination is its own small 3D scene with its own sky, light and palette, and the page eases between them as you choose. The atlas, quiz and journal are built around those same six worlds, so adding a destination updates all of them.",
+    interesting: [
+      "Six imaginary destinations, each a live 3D world with its own sky, light and colour palette.",
+      "A Dream Atlas: an illustrated SVG map with routes, regions and destination previews.",
+      "A “Find your Elsewhere” quiz that scores your answers against the six destinations.",
+      "A travel journal kept in the browser, so there is no account to create.",
+      "Day and night mode, a lighter 3D mode and reduced-motion support.",
+      "Keyboard-operable controls, a skip link and a focus-trapped destination dialog.",
+    ],
+    learned: [],
+    category: ["Web"],
+    technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS 4", "Three.js", "React Three Fiber", "Drei", "Motion"],
+    githubUrl: "https://github.com/asmizilpilwar19/elsewhere",
+    liveUrl: "https://elsewhere-theta.vercel.app/",
+    image: "/work/elsewhere/hero.webp",
+    screenshots: [
+      { src: "/work/elsewhere/hero.webp", alt: "ELSEWHERE homepage: floating islands at sunset under the headline “The world is not enough.”", caption: "The first world" },
+      { src: "/work/elsewhere/worlds.webp", alt: "ELSEWHERE destination cards for Solara, The Sleeping Coast, The Lost Meridian and Velora", caption: "Six destinations" },
+      { src: "/work/elsewhere/atlas.webp", alt: "ELSEWHERE's Dream Atlas: an illustrated map of imaginary regions beside a preview of the Solara destination", caption: "Dream Atlas" },
+      { src: "/work/elsewhere/immersive.webp", alt: "ELSEWHERE's immersive scroll section: an orange desert at sunset beneath the words “Some places exist”", caption: "Sunset to midnight" },
+    ],
+    phones: [{ src: "/work/elsewhere/mobile.webp", alt: "ELSEWHERE on a phone", caption: "On a phone" }],
+    shotRatio: "aspect-[16/10]",
+    embeddable: true,
+    panel: "linear-gradient(160deg,#171233 0%,#2c2358 52%,#6a3a72 100%)",
+    featured: true,
+    year: 2026,
+    status: "Live concept site",
+    accent: "#f2a67b",
+  },
+  {
+    slug: "kinesys",
+    name: "KINESYS",
+    repo: "headphone",
+    kind: "Concept website",
+    tagline: "A headphone launch you scroll through like a film.",
+    what: "A launch website for a fictional over-ear headphone brand (KINESYS, model KX-1 SIGNAL), built around scroll-driven 360° rotation and exploded-view product sequences.",
+    why: "A study in the trendy product-launch look: bold outlined type, chrome and violet over an electric-blue Y2K palette, with the product as the star of the scroll.",
+    problem:
+      "A product launch page with no product: no photography and no 3D model existed, yet the site still had to feel like a premium drop.",
+    solution:
+      "The product frames are generated in code by a small software 3D pipeline and exported as image sequences. A canvas player maps scroll progress to a frame, eases the playhead and loads frames coarse-to-fine, so fast flicks and reverse scrolling still feel smooth.",
+    interesting: [
+      "Four scroll-driven image sequences: hero, 360° rotation, exploded view and a finale.",
+      "Frames load coarse-to-fine, and the loader jumps ahead to wherever you are scrolling.",
+      "Lighter frame sets are served on mobile.",
+      "All copy, colourways and specs live in one config file. The specs are deliberately illustrative.",
+      "prefers-reduced-motion swaps the pinned sequences for static stills and text.",
+      "If the first frames cannot load, a labelled placeholder illustration appears instead.",
+    ],
+    learned: [],
+    category: ["Web"],
+    technologies: ["Next.js", "TypeScript", "Tailwind CSS v4", "Motion", "Lucide", "Canvas image sequences"],
+    githubUrl: "https://github.com/asmizilpilwar19/headphone",
+    liveUrl: "https://kinesys-headphones.vercel.app/",
+    image: "/work/kinesys/hero.webp",
+    screenshots: [
+      { src: "/work/kinesys/hero.webp", alt: "KINESYS homepage: chrome and violet over-ear headphones behind the outlined headline “Feel everything”", caption: "Hero" },
+      { src: "/work/kinesys/detail.webp", alt: "KINESYS close-up of the earcup with its glowing lime LED ring under the words “Every curve. Every detail.”", caption: "Close-up" },
+      { src: "/work/kinesys/exploded.webp", alt: "KINESYS exploded view of the headphones with the headline “Take sound apart”", caption: "Exploded view" },
+    ],
+    phones: [{ src: "/work/kinesys/mobile.webp", alt: "KINESYS on a phone", caption: "On a phone" }],
+    shotRatio: "aspect-[16/10]",
+    embeddable: true,
+    year: 2026,
+    status: "Live concept site",
+    accent: "#2a27c9",
+  },
   {
     slug: "aura",
     name: "AURA",
@@ -110,6 +197,9 @@ const base: Project[] = [
     githubUrl: "https://github.com/asmizilpilwar19/smartperfume",
     liveUrl: "https://smartperfume-chi.vercel.app/",
     image: `${U}/shot-02.webp`,
+    kind: "Concept website",
+    embeddable: true,
+    panel: "#13110f",
     screenshots: [
       { src: `${U}/shot-01.webp`, alt: "AURA hero with the 3D perfume bottle and the line 'Your scent. Your moment.'", caption: "Hero" },
       { src: `${U}/shot-02.webp`, alt: "AURA concept section: 'Perfume shouldn't stay the same.'", caption: "The concept" },
@@ -122,7 +212,6 @@ const base: Project[] = [
       { src: `${U}/shot-09.webp`, alt: "AURA 'Technology you barely notice' exploded-view section", caption: "Exploded view" },
       { src: `${U}/shot-10.webp`, alt: "AURA 'One bottle, tuned to the shape of your day' mood modes", caption: "Modes of the day" },
     ],
-    featured: true,
     year: 2026,
     status: "Live concept site",
     accent: "#C9A36A",
@@ -150,6 +239,7 @@ const base: Project[] = [
     technologies: ["Next.js 16", "React 19", "TypeScript", "Tailwind CSS v4", "PostgreSQL", "Prisma", "Node.js 20+", "Docker Compose"],
     githubUrl: "https://github.com/asmizilpilwar19/aperture-ai-saas",
     image: `${A}/dashboard.webp`,
+    shotRatio: "aspect-[16/10]",
     screenshots: [
       { src: `${A}/dashboard.webp`, alt: "Aperture dashboard with stats, a usage chart and recent conversations", caption: "Dashboard" },
       { src: `${A}/chat.webp`, alt: "Aperture AI chat workspace", caption: "AI chat" },
@@ -166,7 +256,6 @@ const base: Project[] = [
       { src: `${A}/mobile-documents.webp`, alt: "Aperture documents list on a phone", caption: "Documents" },
       { src: `${A}/mobile-nav.webp`, alt: "Aperture navigation drawer on a phone", caption: "Navigation" },
     ],
-    featured: true,
     year: 2026,
     status: "Open source, run locally",
     accent: "#5B4EE6",
@@ -266,92 +355,74 @@ const base: Project[] = [
     slug: "studysphere",
     name: "Study Sphere",
     tagline: "A student's whole study life in one app: plan it, focus on it, remember it.",
-    what: "A student productivity app for Android and iOS, built with Expo and React Native. A planner, Pomodoro and flow-state focus timers, notes, exams, flashcards and progress tracking live in one place, and it works fully offline.",
-    why: "Studying usually means a timer app, a notes app, a calendar and a flashcard app that never talk to each other. Study Sphere keeps them on one set of data, so a single focus session counts toward a goal, a streak and a chapter at the same time.",
-    problem:
-      "Students lose time to switching tools, and most apps either overwhelm them with stats or nag them with streak pressure. What helps is one calm place that knows what is due, what has been studied and what is coming up.",
-    solution:
-      "A local-first Expo Router app. Every screen reads from small context stores that persist on the device, and one timer engine drives Pomodoro, flow and custom sessions. Streaks, statistics, goals and the focus score are all derived from that same session history, so nothing is entered twice.",
+    what: "A student productivity app for Android and iOS, built with Expo and React Native. Planning, focus timers, notes and progress tracking, together in one calm place.",
+    why: "Studying usually means juggling several apps that never talk to each other. Study Sphere brings the essentials together.",
     interesting: [
-      "One timer engine runs three focus modes (Pomodoro, count-up flow and custom) and keeps its place through navigation and backgrounding.",
-      "A focus-sounds mixer with 19 sounds, seven presets and saved custom mixes, built on expo-audio.",
-      "Revision is scheduled with spaced repetition, counting back from each exam date.",
-      "Insights are honest: narrative insights only appear once there is enough data, and the focus score is deliberately never pressuring.",
-      "Accounts live on the device (salted, hashed passwords) with per-user data isolation. Cloud sync is documented as a seam, not faked.",
-      "The study assistant talks to a proxy you host, so no API key ships in the app. Without one it runs a clearly labelled demo mode.",
+      "Works offline: your data stays on your device.",
+      "A layout that adapts from phone to tablet, in light and dark themes.",
     ],
     learned: [],
     category: ["Mobile"],
     isPrivate: true,
-    technologies: ["Expo SDK 57", "Expo Router", "React Native", "TypeScript", "Reanimated", "expo-audio", "expo-notifications", "AsyncStorage", "expo-crypto"],
+    technologies: ["Expo", "React Native", "TypeScript"],
     art: "studysphere",
     features: [
-      "Planner with sessions, tasks and a calendar",
-      "Pomodoro, flow and custom focus timers",
-      "Focus sounds mixer",
-      "Subjects with syllabus chapters",
-      "Notes with folders, tags and autosave",
-      "Goals, streaks and achievements",
-      "Exams with countdowns and a revision schedule",
-      "Flashcards and quizzes",
-      "AI study assistant (demo mode by default)",
-      "Search across everything",
-      "Study insights and a focus score",
-      "Data export, light and dark themes",
-    ],
-    phases: [
-      { title: "Foundations", text: "Design system, responsive shell, dashboard, subjects, light and dark theme." },
-      { title: "Planner & focus", text: "Planner, tasks, calendar, the Pomodoro engine and local reminders." },
-      { title: "Notes & progress", text: "Notes, syllabus chapters, goals, streaks, statistics and achievements." },
-      { title: "Exams & smart study", text: "Exams, spaced revision, flashcards, quizzes, resources and the assistant." },
-      { title: "Final polish", text: "Global search, focus score, insights, data export, account tools and focus modes." },
+      "Planner with sessions and tasks",
+      "Pomodoro and flow-state focus timers",
+      "Notes",
+      "Progress and streaks",
     ],
     screenshots: [],
     year: 2026,
-    status: "Private project · runs in Expo Go",
+    status: "Private project",
     accent: "#8f7fd1",
   },
   {
     slug: "novara",
     name: "Novara",
-    tagline: "A calm wellness companion for Android and iOS: track, reflect, and find support when things feel heavy.",
-    what: "A mental-wellness mobile app for Android and iOS. It brings mood and sleep tracking, a private journal, self-care routines, guided breathing and grounding, a personal safety plan and an optional on-device companion together in a soft botanical design.",
-    why: "Wellness apps often feel clinical or pushy. Novara is built around calm: nothing starts on its own, nothing is diagnosed, and the hardest moments get simple steps that can all be skipped.",
-    problem:
-      "Someone who is struggling needs less on the screen, not more. The app has to be gentle in ordinary use, unmistakably simple in a bad moment, and honest that it is not medical care.",
-    solution:
-      "Everything sits behind provider interfaces (auth, data, wellness, support, insights, AI). The same screens run on an offline SQLite backend by default and can switch to Supabase with row-level security when credentials are set. Design tokens drive light and dark themes, and a botanical layer adds leaves and blooms that scale from none to lush.",
+    tagline: "A calm wellness companion for Android and iOS: track, reflect, breathe.",
+    what: "A mental-wellness mobile app for Android and iOS, with mood tracking, a private journal and guided breathing, wrapped in a soft botanical design.",
+    why: "Wellness apps often feel clinical or pushy. Novara is built around calm.",
     interesting: [
-      "Crisis messages typed to the companion get a local, scripted reply and never reach an AI provider. The app holds no model key at all.",
-      "Panic Support is a guided flow (pause, breathe, ground, orient, choose, check in) where every step is skippable and nothing auto-starts.",
-      "Emergency numbers are per-region and every call needs a confirming tap. The app never auto-dials.",
-      "Two interchangeable backends behind the same interfaces: on-device SQLite and Supabase.",
-      "Progress grows as a garden, from seed to bloom, and it never goes backwards.",
-      "Covered by 300+ automated tests across 36 suites, with an import guard that protects against a known Expo Go crash.",
+      "A soft botanical design language, with light and dark themes.",
+      "Built to be gentle: no pressure, no diagnosis and no medical claims.",
     ],
     learned: [],
     category: ["Mobile"],
     isPrivate: true,
-    technologies: ["Expo SDK 57", "React Native", "React 19", "TypeScript (strict)", "React Navigation", "Reanimated", "react-native-svg", "expo-sqlite", "Supabase (optional)", "expo-notifications", "Jest"],
+    technologies: ["Expo", "React Native", "TypeScript"],
     art: "novara",
     features: [
-      "Mood wheel with intensity, tags and history",
-      "Private journal with prompts and search",
-      "Sleep log with insights",
-      "Self-care checklists, routines and goals",
-      "Reminders, challenges and badges",
-      "Panic support, breathing and 5-4-3-2-1 grounding",
-      "Personal safety plan",
-      "Crisis resources by region",
-      "Calm reading: seven original articles",
-      "On-device companion",
-      "Privacy centre with export and delete",
-      "Botanical themes from none to lush",
+      "Mood tracking with history",
+      "A private journal",
+      "Guided breathing",
+      "Self-care routines",
     ],
     screenshots: [],
     year: 2026,
-    status: "Private repo · Android build made locally",
+    status: "Private project",
     accent: "#9db08a",
+  },
+  {
+    slug: "petalia",
+    name: "Petalia",
+    kind: "Mobile app",
+    tagline: "A softer way to meet flowers.",
+    what: "A flower discovery and reference app for mobile, illustrated in a soft bloom-purple palette.",
+    why: "A calm, illustrated place to look flowers up and learn about them. It is a private project, so it is shown here at a high level only.",
+    interesting: [
+      "An illustrated look rather than stock photography.",
+      "A soft bloom-purple and plum palette on a warm cream background.",
+    ],
+    learned: [],
+    category: ["Mobile"],
+    isPrivate: true,
+    technologies: [],
+    art: "petalia",
+    screenshots: [],
+    year: 2026,
+    status: "Private project",
+    accent: "#8a5cc2",
   },
 ];
 
@@ -363,6 +434,9 @@ export const projects: Project[] = base.map((p) => {
   const meta = p.repo ? repos[p.repo] : undefined;
   return { ...p, liveUrl: p.liveUrl ?? (meta?.homepage || undefined) };
 });
+
+/** The one project featured on the homepage. Change this slug to feature another. */
+export const featuredSlug = "elsewhere";
 
 export const getProject = (slug: string) => projects.find((p) => p.slug === slug);
 

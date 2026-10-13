@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { site } from "@/data/site";
 import { projects } from "@/data/projects";
+import { capitalWord, numberWord } from "@/lib/words";
 import { Marquee } from "@/components/ui/marquee";
 import { Arrow } from "@/components/ui/bits";
 
@@ -8,7 +9,7 @@ const statements = [
   {
     n: "01",
     head: ["I build", "web experiences."],
-    note: "React and Next.js on the front, Python, Node or FastAPI behind it, and the 3D and motion layer when a page deserves it. AURA is the one where all of that goes up a notch.",
+    note: "React and Next.js on the front, Python, Node or FastAPI behind it, and the 3D and motion layer when a page deserves it. AURA and ELSEWHERE are where all of that goes up a notch.",
     align: "left",
   },
   {
@@ -44,7 +45,7 @@ export function Manifesto() {
         </h2>
         <div data-fade className="md:col-span-3">
           <p className="text-[0.95rem] leading-relaxed text-ink-2">
-            Seven projects below, from a live 3D concept site to two mobile apps. Each has its own page with the full story.
+            {capitalWord(projects.length)} projects, from live 3D concept sites to {numberWord(projects.filter((p) => p.category.includes("Mobile")).length)} mobile apps. Each has its own page with the full story.
           </p>
           <Link href="/about" className="label u-link mt-5 inline-flex items-center gap-2" data-cursor="Open">
             More about me <Arrow />
@@ -114,7 +115,7 @@ export function Profile() {
 /** Home: big doorways to the other pages. */
 export function Explore() {
   const items = [
-    { n: "01", href: "/work", title: "All work", blurb: "Seven case studies, filterable, each with its own layout." },
+    { n: "01", href: "/work", title: "All work", blurb: `${capitalWord(projects.length)} case studies, filterable, each with its own layout.` },
     { n: "02", href: "/concepts", title: "Concepts", blurb: "Four imagined sites, clearly labelled as sketches." },
     { n: "03", href: "/about", title: "About & stack", blurb: "Who I am and what I work with, with receipts." },
   ];

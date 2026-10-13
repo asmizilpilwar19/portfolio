@@ -1,10 +1,40 @@
 {
   "meta": {
     "user": "asmizilpilwar19",
-    "publicRepos": 20,
-    "syncedAt": "2026-10-07"
+    "publicRepos": 23,
+    "syncedAt": "2026-10-13"
   },
   "repos": {
+    "elsewhere": {
+      "description": "ELSEWHERE is an immersive virtual travel website featuring surreal destinations, interactive 3D landscapes, cinematic scroll animations, parallax scenery, and dreamy sunset-inspired colours.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 1,
+      "homepage": "https://elsewhere-theta.vercel.app/",
+      "createdAt": "2026-10-13T09:26:25Z",
+      "pushedAt": "2026-10-13T09:27:03Z",
+      "url": "https://github.com/asmizilpilwar19/elsewhere"
+    },
+    "headphone": {
+      "description": "A futuristic headphone brand website with 360° scroll animations, metallic 3D renders, bold typography, electric blue and purple gradients, and trendy Y2K aesthetics.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 1,
+      "homepage": "https://kinesys-headphones.vercel.app/",
+      "createdAt": "2026-10-13T08:35:01Z",
+      "pushedAt": "2026-10-13T08:35:43Z",
+      "url": "https://github.com/asmizilpilwar19/headphone"
+    },
+    "portfolio": {
+      "description": "A creative developer portfolio showcasing my AI, web, mobile, and full-stack projects through interactive visuals, animations, and 3D experiences.",
+      "language": "TypeScript",
+      "topics": [],
+      "stars": 0,
+      "homepage": "https://asmizilpilwar.vercel.app/",
+      "createdAt": "2026-10-07T15:17:15Z",
+      "pushedAt": "2026-10-07T15:18:33Z",
+      "url": "https://github.com/asmizilpilwar19/portfolio"
+    },
     "tic-tac-toe": {
       "description": null,
       "language": "Python",

@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { projects } from "@/data/projects";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { PageHeader } from "@/components/page-header";
 import { NextPage } from "@/components/next-page";
@@ -23,7 +24,7 @@ export default function ConceptsPage() {
         }
         blurb="These four are not client work and not shipped. They are quick design sketches of the kind of brief I would enjoy: a storefront, a mobile app, a booking site and a docs site."
       />
-      <Concepts index="08" bare />
+      <Concepts index={String(projects.length + 1).padStart(2, "0")} bare />
       <NextPage href="/about" eyebrow="Who is behind this" title="About" />
       <Footer />
     </>

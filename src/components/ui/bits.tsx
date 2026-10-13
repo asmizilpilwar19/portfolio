@@ -29,7 +29,7 @@ export function Button({
 }: {
   href: string;
   children: React.ReactNode;
-  tone?: "ink" | "signal" | "paper" | "outline";
+  tone?: "ink" | "signal" | "paper" | "outline" | "lime";
   external?: boolean;
   className?: string;
 }) {
@@ -38,6 +38,7 @@ export function Button({
     signal: "bg-signal text-ink hover:bg-paper",
     paper: "bg-paper text-ink hover:bg-signal",
     outline: "border border-current hover:bg-ink hover:text-paper",
+    lime: "bg-[#c8ff2e] text-ink hover:bg-paper",
   } as const;
   const cls = `label group inline-flex items-center gap-3 px-5 py-4 transition-colors duration-300 ${tones[tone]} ${className}`;
   return (

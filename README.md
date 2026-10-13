@@ -12,8 +12,8 @@ npm run build        # runs the GitHub sync first, then builds
 
 | Route | What's there |
 | --- | --- |
-| `/` | Hero with 3D sculpture, manifesto, featured live site (AURA), first case study, doorways |
-| `/work` | Filterable index, then the longer stories (asymmetric, horizontal gallery, editorial, mobile apps) |
+| `/` | Hero with 3D sculpture, manifesto, featured live site (ELSEWHERE), first case study, doorways |
+| `/work` | Filterable index, then the longer stories (AURA, KINESYS, asymmetric, horizontal gallery, editorial, mobile apps) |
 | `/work/[slug]` | Full case study for each project |
 | `/concepts` | Four imagined briefs, clearly labelled as concepts |
 | `/about` | Statements, profile, "what I work with" |
@@ -28,7 +28,7 @@ Everything lives in `src/data/`:
 - **`concepts.ts`**: the imagined briefs. These are never presented as shipped work.
 - **`stack.ts`**: the technologies section. Each item says which project it appears in.
 
-Private projects (`isPrivate: true`, no `githubUrl`) are described but never linked. Study Sphere and Novara are set up that way. When a repo goes public, add its `repo` and `githubUrl`.
+Private projects (`isPrivate: true`, no `githubUrl`) are described but never linked. Study Sphere, Novara and Petalia are set up that way. When a repo goes public, add its `repo` and `githubUrl`.
 
 ## GitHub sync (build time, never runtime)
 
@@ -40,7 +40,7 @@ Fetches public repo metadata into `src/data/github.generated.json`. The site nev
 
 ## Screenshots
 
-`scripts/prepare-images.mjs` crops browser chrome off raw screenshots and writes optimised WebP into `public/work/<slug>/`. Repos without screenshots (ResumeForge, StoryAtlas) use code-built previews in `src/components/previews/`. Study Sphere and Novara use illustrated posters, not screenshots.
+`scripts/prepare-images.mjs` crops browser chrome off raw screenshots and writes optimised WebP into `public/work/<slug>/`. Repos without screenshots (ResumeForge, StoryAtlas) use code-built previews in `src/components/previews/`. Study Sphere, Novara and Petalia use illustrated posters, not screenshots. ELSEWHERE and KINESYS use screenshots of the live sites.
 
 ## Motion and accessibility
 

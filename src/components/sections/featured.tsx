@@ -8,8 +8,6 @@ import { useReducedMotion } from "@/lib/hooks";
 import { Button, Tags } from "@/components/ui/bits";
 import { Tilt } from "@/components/ui/tilt";
 
-const GOLD = "#c9a36a";
-
 /** Renders the live site at desktop width and scales it to fit the frame. */
 function LivePreview({ url, title }: { url: string; title: string }) {
   const box = useRef<HTMLDivElement>(null);
@@ -52,7 +50,12 @@ function LivePreview({ url, title }: { url: string; title: string }) {
   );
 }
 
-export function Featured({ project }: { project: Project }) {
+/**
+ * Dark showcase panel for a live site. Everything project-specific (accent colour,
+ * panel background, screenshot ratio, live-preview toggle) comes from the data.
+ * `featured` switches the label between "Featured project" and a plain "Live now".
+ */
+export function Featured({ project, featured = true }: { project: Project; featured?: boolean }) {
   const [i, setI] = useState(0);
   const [live, setLive] = useState(false);
   const [hover, setHover] = useState(false);
@@ -77,13 +80,18 @@ export function Featured({ project }: { project: Project }) {
   }, [reduce, hover, live, inView, shots.length]);
 
   const shot = shots[i];
+  const accent = project.accent;
+  const host = project.liveUrl ? new URL(project.liveUrl).host : project.name;
+  // Long names (ELSEWHERE) shrink so the giant title always fits the page width.
+  const titleVw = Math.min(18, 74 / (project.name.length * 0.66));
 
   return (
     <section
       ref={section}
-      id="featured"
-      data-section="Featured"
-      className="relative overflow-hidden bg-[#13110f] text-[#efe6d6]"
+      id={featured ? "featured" : project.slug}
+      data-section={featured ? "Featured" : project.name}
+      className="relative overflow-hidden text-[#efe6d6]"
+      style={{ background: project.panel ?? "#13110f" }}
     >
       <div className="gutter pb-28 pt-24 md:pb-44 md:pt-36">
         <div className="label flex items-center justify-between gap-6">
@@ -92,17 +100,19 @@ export function Featured({ project }: { project: Project }) {
               <span className="absolute inset-0 animate-ping rounded-full bg-signal opacity-70" />
               <span className="relative h-2 w-2 rounded-full bg-signal" />
             </span>
-            Featured project, live now
+            {featured ? "Featured project, live now" : "Live now"}
           </span>
-          <span className="opacity-50">Concept site · 2026</span>
+          <span className="opacity-50">
+            {project.kind ?? "Project"} · {project.year}
+          </span>
         </div>
 
         <h2
-          className="display relative z-10 mt-6 select-none text-[clamp(5rem,18vw,19rem)] leading-[0.8] tracking-[-0.04em]"
-          style={{ color: GOLD }}
+          className="display relative z-10 mt-6 select-none leading-[0.8] tracking-[-0.04em]"
+          style={{ color: accent, fontSize: `clamp(3.2rem, ${titleVw.toFixed(2)}vw, 19rem)` }}
           data-split
         >
-          AURA
+          {project.name}
         </h2>
 
         <div className="relative z-0 -mt-[2vw] grid grid-cols-1 gap-12 lg:grid-cols-12">
@@ -121,20 +131,22 @@ export function Featured({ project }: { project: Project }) {
                     <i className="block h-2 w-2 rounded-full bg-white/20" />
                   </span>
                   <span className="label min-w-0 flex-1 truncate rounded-full bg-black/30 px-3 py-1 text-[0.62rem] normal-case tracking-[0.08em] text-white/50">
-                    smartperfume-chi.vercel.app
+                    {host}
                   </span>
-                  <button
-                    type="button"
-                    onClick={() => setLive((v) => !v)}
-                    aria-pressed={live}
-                    className="label shrink-0 border border-white/25 px-3 py-1 text-[0.62rem] transition hover:bg-white hover:text-ink"
-                  >
-                    {live ? "Back to screenshots" : "Load live preview"}
-                  </button>
+                  {project.embeddable && project.liveUrl && (
+                    <button
+                      type="button"
+                      onClick={() => setLive((v) => !v)}
+                      aria-pressed={live}
+                      className="label shrink-0 border border-white/25 px-3 py-1 text-[0.62rem] transition hover:bg-white hover:text-ink"
+                    >
+                      {live ? "Back to screenshots" : "Load live preview"}
+                    </button>
+                  )}
                 </div>
-                <div className="relative aspect-[16/7.3] w-full bg-black">
+                <div className={`relative ${project.shotRatio ?? "aspect-[16/7.3]"} w-full bg-black`}>
                   {live && project.liveUrl ? (
-                    <LivePreview url={project.liveUrl} title="AURA live site preview" />
+                    <LivePreview url={project.liveUrl} title={`${project.name} live site preview`} />
                   ) : (
                     <Image
                       key={shot.src}
@@ -165,7 +177,8 @@ export function Featured({ project }: { project: Project }) {
                         onClick={() => setI(n)}
                         aria-label={`Show screenshot ${n + 1}: ${s.caption}`}
                         aria-current={n === i}
-                        className={`relative block h-12 w-24 overflow-hidden border transition ${n === i ? "border-[#c9a36a]" : "border-white/10 opacity-50 hover:opacity-100"}`}
+                        style={n === i ? { borderColor: accent } : undefined}
+                        className={`relative block h-12 w-24 overflow-hidden border transition ${n === i ? "" : "border-white/10 opacity-50 hover:opacity-100"}`}
                       >
                         <Image src={s.src} alt="" fill sizes="96px" className="object-cover object-top" />
                       </button>

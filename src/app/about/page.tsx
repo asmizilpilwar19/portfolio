@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { projects } from "@/data/projects";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { PageHeader } from "@/components/page-header";
 import { NextPage } from "@/components/next-page";
@@ -26,7 +27,7 @@ export default function AboutPage() {
       />
       <Statements />
       <Profile />
-      <Stack index="09" />
+      <Stack index={String(projects.length + 2).padStart(2, "0")} />
       <NextPage href="/contact" eyebrow="Got something in mind?" title="Contact" />
       <Footer />
     </>

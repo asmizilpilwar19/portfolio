@@ -1,17 +1,21 @@
 import type { Metadata } from "next";
 import { projects } from "@/data/projects";
+import { capitalWord, numberWord } from "@/lib/words";
 import { concepts } from "@/data/concepts";
 import { ScrollEffects } from "@/components/scroll-effects";
 import { PageHeader } from "@/components/page-header";
 import { NextPage } from "@/components/next-page";
-import { ProjectResume, ProjectStory, MobileApps } from "@/components/sections/work";
+import { ProjectAperture, ProjectResume, ProjectStory, MobileApps } from "@/components/sections/work";
+import { Featured } from "@/components/sections/featured";
 import { LibraeShowcase } from "@/components/sections/librae-showcase";
 import { WorkIndex, type IndexRow } from "@/components/sections/work-index";
 import { Footer } from "@/components/sections/contact";
 
+const mobileCount = projects.filter((p) => p.category.includes("Mobile")).length;
+
 export const metadata: Metadata = {
   title: "Work",
-  description: "Seven projects: a live 3D concept site, AI products, full-stack apps and two mobile apps, each with a case study.",
+  description: `${capitalWord(projects.length)} projects: live 3D and scroll-driven concept sites, AI products, full-stack apps and ${numberWord(mobileCount)} mobile apps, each with a case study.`,
 };
 
 const num = (n: number) => String(n).padStart(2, "0");
@@ -21,6 +25,8 @@ export default function WorkPage() {
     const i = projects.findIndex((p) => p.slug === slug);
     return { p: projects[i], n: num(i + 1) };
   };
+  const aura = find("aura");
+  const aperture = find("aperture");
   const resume = find("resumeforge");
   const librae = find("librae");
   const story = find("storyatlas");
@@ -52,6 +58,8 @@ export default function WorkPage() {
         blurb="Every project here is something I built. Filter the index, or scroll for the longer stories. Each one opens into a full case study."
       />
       <WorkIndex rows={rows} index="00" />
+      <Featured project={aura.p} featured={false} />
+      <ProjectAperture p={aperture.p} index={aperture.n} />
       <ProjectResume p={resume.p} index={resume.n} />
       <LibraeShowcase project={librae.p} index={librae.n} />
       <ProjectStory p={story.p} index={story.n} />

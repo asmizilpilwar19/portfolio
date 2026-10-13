@@ -1,5 +1,5 @@
 /**
- * Illustrated posters for the two mobile projects. These are NOT screenshots:
+ * Illustrated posters for the mobile projects. These are NOT screenshots:
  * they're abstract compositions built from each app's own ideas (a focus timer,
  * a garden), so the pages feel full without pretending to show the UI.
  */
@@ -49,7 +49,7 @@ export function StudySpherePoster({ className = "" }: { className?: string }) {
         </g>
 
         {/* mode chips */}
-        {["Pomodoro", "Flow", "Custom"].map((t, i) => (
+        {["Plan", "Focus", "Notes"].map((t, i) => (
           <g key={t} transform={`translate(${120 + i * 190} 880)`}>
             <rect width="170" height="52" fill={i === 0 ? "#1b1a17" : "none"} stroke="#1b1a17" />
             <text x="85" y="33" textAnchor="middle" fontSize="18" letterSpacing="3" fill={i === 0 ? "#ece5d5" : "#1b1a17"} style={mono}>
@@ -105,8 +105,89 @@ export function NovaraPoster({ className = "" }: { className?: string }) {
   );
 }
 
-export function MobilePoster({ art, className }: { art: "studysphere" | "novara"; className?: string }) {
-  return art === "studysphere" ? <StudySpherePoster className={className} /> : <NovaraPoster className={className} />;
+/**
+ * Petalia is private, so this is an illustration, not a screenshot: a botanical
+ * "specimen plate" in the app's own bloom-purple, plum and cream palette.
+ */
+export function PetaliaPoster({ className = "" }: { className?: string }) {
+  const ring = (n: number, ry: number, fill: string, offset = 0) =>
+    Array.from({ length: n }, (_, i) => (
+      <ellipse
+        key={`${ry}-${i}`}
+        cx="0"
+        cy={-ry * 0.62}
+        rx={ry * 0.3}
+        ry={ry * 0.62}
+        transform={`rotate(${(360 / n) * i + offset})`}
+        fill={fill}
+        stroke="#5b3a8c"
+        strokeOpacity={0.28}
+      />
+    ));
+  const leaf = (x: number, y: number, rot: number, s = 1) => (
+    <ellipse key={`${x}-${y}`} cx={x} cy={y} rx={46 * s} ry={15 * s} transform={`rotate(${rot} ${x} ${y})`} fill="#6e9a78" fillOpacity={0.8} />
+  );
+  return (
+    <div
+      className={`relative aspect-[4/5] w-full overflow-hidden bg-[#faf6f1] text-[#3a2a44] ${className}`}
+      role="img"
+      aria-label="Illustration: a large purple bloom on a cream botanical specimen plate titled Petalia"
+    >
+      <svg viewBox="0 0 800 1000" className="absolute inset-0 h-full w-full" aria-hidden>
+        <rect x="36" y="36" width="728" height="928" fill="none" stroke="#3a2a44" strokeOpacity={0.25} />
+        <rect x="52" y="52" width="696" height="896" fill="none" stroke="#3a2a44" strokeOpacity={0.12} />
+        <text x="84" y="106" fontSize="17" letterSpacing="5" fill="#7d6c88" style={mono}>
+          PLATE 01
+        </text>
+        <text x="716" y="106" textAnchor="end" fontSize="17" letterSpacing="5" fill="#7d6c88" style={mono}>
+          BLOOM PURPLE
+        </text>
+
+        {/* stems and leaves */}
+        <g>
+          <path d="M400 640 C 396 700, 410 750, 404 810" fill="none" stroke="#6e9a78" strokeWidth="5" />
+          <path d="M170 830 C 205 770, 260 720, 330 676" fill="none" stroke="#6e9a78" strokeWidth="4" />
+          <path d="M630 830 C 595 770, 540 725, 470 686" fill="none" stroke="#6e9a78" strokeWidth="4" />
+          {leaf(436, 720, -28, 1.15)}
+          {leaf(368, 770, 205, 1.05)}
+          {leaf(205, 792, -50, 0.95)}
+          {leaf(250, 728, -55, 0.85)}
+          {leaf(600, 792, 50, 0.95)}
+          {leaf(556, 730, 55, 0.85)}
+        </g>
+
+        {/* the bloom */}
+        <g transform="translate(400 380)">
+          <g className="breathe" style={{ transformOrigin: "0px 0px" }}>
+            {ring(10, 250, "#8a5cc2")}
+            {ring(10, 190, "#b88df0", 18)}
+            {ring(8, 130, "#efe5fa", 0)}
+            <circle r="40" fill="#b98a2b" />
+            {Array.from({ length: 14 }, (_, i) => (
+              <circle key={i} cx={Math.cos((i / 14) * Math.PI * 2) * 62} cy={Math.sin((i / 14) * Math.PI * 2) * 62} r="5" fill="#b98a2b" fillOpacity={0.75} />
+            ))}
+          </g>
+        </g>
+
+        {/* small companion blooms */}
+        <g transform="translate(130 250) scale(0.2)">{ring(7, 250, "#fbe8f0")}</g>
+        <g transform="translate(676 232) scale(0.18)">{ring(7, 250, "#efe5fa")}</g>
+
+        <text x="400" y="896" textAnchor="middle" fontSize="92" fill="#5b3a8c" style={serif}>
+          Petalia
+        </text>
+        <text x="400" y="940" textAnchor="middle" fontSize="19" letterSpacing="7" fill="#7d6c88" style={mono}>
+          DISCOVER FLOWERS
+        </text>
+      </svg>
+    </div>
+  );
+}
+
+export function MobilePoster({ art, className }: { art: "studysphere" | "novara" | "petalia"; className?: string }) {
+  if (art === "studysphere") return <StudySpherePoster className={className} />;
+  if (art === "novara") return <NovaraPoster className={className} />;
+  return <PetaliaPoster className={className} />;
 }
 
 /** Horizontal build timeline: numbered stops on a line, wraps to a list on phones. */
